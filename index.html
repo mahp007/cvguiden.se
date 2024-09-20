@@ -3,362 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Exclusive domain for sale - Act now">
-    <title>Domain for Sale</title>
-
-    <script>
-        var domainName = "cvguiden.se"; // Variabel för domännamnet
-    </script>
-
+    <title>CV Generator</title>
     <style>
-        /* Global styles */
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #1C1C1C;
-            color: #fff;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            overflow-x: hidden; /* Hindrar horisontell skrollning */
-            opacity: 0;
-            animation: fadeIn 0.8s forwards; /* Snabbare fade-in */
+            padding: 0;
+            background-color: #f4f4f4;
         }
-
-        /* Animering för sidladdning */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Orange färg - #b36d04 */
-        .orange {
-            color: #b36d04;
-        }
-
-        /* Large Domain Name (outside the black box) */
-        .domain-name {
-            font-size: 3.2em; 
-            color: #b36d04;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            transition: transform 0.3s ease, color 0.3s ease;
-            cursor: pointer;
-            animation: colorChange 4s infinite alternate ease-in-out;
-            text-align: center;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            white-space: normal; /* Gör så att lång text bryts på flera rader */
-        }
-
-        @keyframes colorChange {
-            0% { color: #b36d04; }
-            100% { color: #995a03; }
-        }
-
-        .domain-name:hover {
-            transform: scale(1.05);
-        }
-
-        /* Centered black box */
-        .centered-content {
-            max-width: 900px;
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.9);
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            margin-bottom: 30px;
-            overflow-wrap: break-word;
-        }
-
-        .announcement-text {
-            font-size: 1.8em;
-            color: #d3d3d3;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .subtext {
-            font-size: 1.3em;
-            color: #d3d3d3;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        /* Make Your Move text */
-        .cta-text {
-            font-size: 1.8em;
-            color: #b36d04;
-            margin-bottom: 20px;
-            animation: moveAnimation 3s infinite alternate ease-in-out;
-        }
-
-        @keyframes moveAnimation {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-
-        /* Call-to-action button */
-        .cta-button {
-            padding: 15px 50px;
-            background-color: #b36d04;
-            color: black;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: background-color 0.3s, transform 0.3s ease-in-out, width 0.4s, opacity 0.3s;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            max-width: 320px;
-        }
-
-        .cta-button span {
-            opacity: 1;
-            transition: opacity 0.1s ease-in-out;
-        }
-
-        .cta-button:hover {
-            background-color: #995a03;
-            transform: scale(1.05);
-        }
-
-        .cta-button:hover span {
-            opacity: 0;
-        }
-
-        .cta-button::after {
-            content: 'ma.moh006@protonmail.com';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: black;
-            font-size: 0.9em;
-            text-transform: lowercase;
-            opacity: 0;
-            transition: opacity 0.1s ease-in-out;
-        }
-
-        .cta-button:hover::after {
-            opacity: 1;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 0px;
-            flex-wrap: wrap;
-            max-width: 100%; /* Säkerställer att knapparna inte går utanför skärmen */
-        }
-
-        .stat-item {
-            background-color: #262626;
-            padding: 12px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
             text-align: center;
-            width: 120px;
-            transition: transform 0.3s ease;
-            margin-bottom: 10px;
         }
-
-        .stat-item:hover {
-            transform: scale(1.1);
+        form {
+            display: flex;
+            flex-direction: column;
         }
-
-        .stat-item h3 {
-            font-size: 1.6em;
-            color: #b36d04;
-            margin-bottom: 5px;
+        input, textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
         }
-
-        .stat-item p {
-            font-size: 1em;
-            color: #d3d3d3;
-        }
-
-        /* Chat button */
-        .chat-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #b36d04;
+        button {
+            padding: 10px;
+            background-color: #28a745;
             color: white;
             border: none;
-            border-radius: 50%;
-            padding: 6px;
-            font-size: 14px;
-            width: 40px;
-            height: 40px;
+            border-radius: 5px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: pulse 4s infinite;
         }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        button:hover {
+            background-color: #218838;
         }
-
-        .chat-button:hover {
-            background-color: #995a03;
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #e9ecef;
+            border-radius: 5px;
         }
-
-        .chat-icon::before {
-            content: '💬';
-            font-size: 18px;
-        }
-
-        /* Chat message */
-        .chat-message {
-            display: none;
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            background-color: #262626;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            font-size: 1em;
-            max-width: 300px;
-        }
-
-        /* Mobiloptimering */
-        @media (max-width: 768px) {
-            .domain-name {
-                font-size: 2.5em;
-            }
-
-            .cta-text {
-                font-size: 1.5em;
-            }
-
-            .cta-button {
-                padding: 10px 40px;
-                font-size: 1em;
-            }
-
-            .announcement-text, .subtext {
-                font-size: 1.2em;
-            }
-
-            .stat-item h3 {
-                font-size: 1.4em;
-            }
-
-            .stat-item p {
-                font-size: 0.9em;
-            }
-
-            .centered-content {
-                max-width: 100%;
-                padding: 15px;
-            }
-
-            .chat-button {
-                bottom: 10px;
-                right: 10px;
-                width: 35px;
-                height: 35px;
-                font-size: 12px;
-            }
-
-            .chat-icon::before {
-                font-size: 16px;
-            }
-        }
-
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>CV Generator</h1>
+        <form id="cv-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
 
-    <!-- Domain name outside the black box -->
-    <h1 class="domain-name" id="domainNameDisplay"></h1>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
 
-    <!-- Centered content inside the black box -->
-    <div class="centered-content">
-        <p class="announcement-text">This premium domain is now available for sale.</p>
-        <p class="subtext">Take your business to the next level with this exclusive domain. Secure your brand’s future!</p>
-        <p class="cta-text">Make Your Move. Secure It Today!</p>
-        <button class="cta-button" onclick="contactUs()">
-            <span>Contact Us</span>
-        </button>
-    </div>
+            <label for="experience">Work Experience:</label>
+            <textarea id="experience" rows="5" required></textarea>
 
-    <!-- Stats Section (outside the black box) -->
-    <div class="stats-section">
-        <div class="stat-item">
-            <h3 class="orange">10M+</h3>
-            <p>Potential customers</p>
+            <label for="skills">Skills:</label>
+            <textarea id="skills" rows="3" required></textarea>
+
+            <button type="submit">Generate CV</button>
+        </form>
+
+        <div id="cv-output" class="result" style="display: none;">
+            <h2>Your CV:</h2>
+            <p id="cv-name"></p>
+            <p id="cv-email"></p>
+            <p><strong>Experience:</strong></p>
+            <p id="cv-experience"></p>
+            <p><strong>Skills:</strong></p>
+            <p id="cv-skills"></p>
         </div>
-        <div class="stat-item">
-            <h3 class="orange">10+</h3>
-            <p>Years of industry experience</p>
-        </div>
-        <div class="stat-item">
-            <h3 class="orange">Top</h3>
-            <p>SEO optimized domain</p>
-        </div>
-        <div class="stat-item">
-            <h3 class="orange">Secure</h3>
-            <p>Trusted by professionals</p>
-        </div>
-    </div>
-
-    <!-- Chat button -->
-    <button class="chat-button" onclick="toggleChatMessage()">
-        <span class="chat-icon"></span>
-    </button>
-
-    <!-- Chat message -->
-    <div class="chat-message" id="chatMessage">
-        Looking to buy this domain? Email us at <strong>ma.moh006@protonmail.com</strong> for more information and next steps.
     </div>
 
     <script>
-        document.getElementById('domainNameDisplay').textContent = domainName;
+        const form = document.getElementById('cv-form');
+        const cvOutput = document.getElementById('cv-output');
 
-        function contactUs() {
-            const email = 'ma.moh006@protonmail.com';
-            window.location.href = `mailto:${email}`;
-        }
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-        function toggleChatMessage() {
-            const chatMessage = document.getElementById('chatMessage');
-            if (chatMessage.style.display === 'block') {
-                chatMessage.style.display = 'none';
-            } else {
-                chatMessage.style.display = 'block';
-            }
-        }
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const experience = document.getElementById('experience').value;
+            const skills = document.getElementById('skills').value;
 
-        document.addEventListener('click', function(event) {
-            const chatMessage = document.getElementById('chatMessage');
-            const chatButton = document.querySelector('.chat-button');
-            if (!chatMessage.contains(event.target) && !chatButton.contains(event.target)) {
-                chatMessage.style.display = 'none';
-            }
+            document.getElementById('cv-name').textContent = 'Name: ' + name;
+            document.getElementById('cv-email').textContent = 'Email: ' + email;
+            document.getElementById('cv-experience').textContent = experience;
+            document.getElementById('cv-skills').textContent = skills;
+
+            cvOutput.style.display = 'block';
         });
     </script>
-
 </body>
 </html>
